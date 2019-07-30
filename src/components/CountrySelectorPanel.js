@@ -1,17 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Select = styled.select`
+const CountryButton = styled.button`
   width: 300px;
 `
-Select.displayName = 'Select'
+CountryButton.displayName = 'CountryButton'
 
 const CountrySelectorPanel = () => {
   return (
   <div>
-      <div>
-        <Select />
-      </div>
+      <CountryButton>Australia</CountryButton>
+      <CountryButton>France</CountryButton>
+      <CountryButton>India</CountryButton>
+      <CountryButton>UK</CountryButton>
+      <CountryButton>USA</CountryButton>
   </div>
   )
 }

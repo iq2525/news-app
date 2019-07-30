@@ -7,6 +7,6 @@ describe('<CountrySelectorPanel />', () => {
     it('renders component', () => {
       const wrapper = shallow(<CountrySelectorPanel/>)
 
-      expect(wrapper.find('Select').length).toEqual(1)
+      expect(wrapper.find('CountryButton').length).toEqual(5)
     })
 })
