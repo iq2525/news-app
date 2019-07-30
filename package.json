@@ -15,6 +15,9 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
+  "setupFiles": [
+    "<rootDir>/src/setupTests.js"
+  ],
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -33,9 +36,11 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "devDependencies": {
-    "@storybook/react": "^5.1.9",
     "@storybook/addon-actions": "^5.1.9",
-    "@storybook/addon-links": "^5.1.9"
+    "@storybook/addon-links": "^5.1.9",
+    "@storybook/react": "^5.1.9",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0"
   },
   "author": "Iqbal Ahmed",
   "license": "ISC"
