@@ -16,9 +16,6 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
-  "setupFiles": [
-    "<rootDir>/src/setupTests.js"
-  ],
   "eslintConfig": {
     "extends": "react-app"
   },
