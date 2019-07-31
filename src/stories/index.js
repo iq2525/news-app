@@ -1,40 +1,45 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
+import { storiesOf } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import { linkTo } from "@storybook/addon-links";
 
-import CountrySelectorPanel from '../components/CountrySelectorPanel'
-import TopStoriesPanel from '../components/TopStoriesPanel'
+import CountrySelectorPanel from "../components/CountrySelectorPanel";
+import TopStoriesPanel from "../components/TopStoriesPanel";
 
 const propsCountrySelectorPanel = {
   countries: [
     {
-      name: 'Australia',
-      code: 'au'
+      name: "Australia",
+      code: "au"
     },
     {
-      name: 'France',
-      code: 'fr'
+      name: "France",
+      code: "fr"
     },
     {
-      name: 'India',
-      code: 'in'
+      name: "India",
+      code: "in"
     },
     {
-      name: 'UK',
-      code: 'au'
+      name: "UK",
+      code: "au"
     },
     {
-      name: 'USA',
-      code: 'au'
+      name: "USA",
+      code: "au"
     }
   ]
-}
+};
 
-storiesOf('CountrySelectorPanel', module)
-  .add('default state', () => <CountrySelectorPanel {...propsCountrySelectorPanel}/>)
+const propsTopStoriesPanel = ["Story 1", "Story 2"];
 
-storiesOf('TopStoriesPanel', module)
-  .add('default state', () => <TopStoriesPanel />)
+storiesOf("CountrySelectorPanel", module).add("default state", () => (
+  <CountrySelectorPanel {...propsCountrySelectorPanel} />
+));
 
+storiesOf("TopStoriesPanel", module)
+  .add("empty state", () => <TopStoriesPanel />)
+  .add("contains 2 stories", () => (
+    <TopStoriesPanel {...propsTopStoriesPanel} />
+  ));
