@@ -8,7 +8,7 @@ const Container = styled.div`
 `;
 Container.displayName = "Container";
 
-const Story = styled.div`
+const Story = styled.section`
   width: 100%;
   padding: 10px;
 `;
