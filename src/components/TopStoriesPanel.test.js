@@ -31,6 +31,10 @@ describe("<TopStoriesPanel />", () => {
     const propsLoading = { ...props, isLoading: true };
     const wrapper = shallow(<TopStoriesPanel {...propsLoading} />);
 
+    const container = wrapper.find("Container");
+    expect(container.length).toEqual(1);
+    expect(container.text()).toEqual("Loading...");
+
     const stories = wrapper.find("Story");
     expect(stories.length).toEqual(0);
   });
