@@ -39,7 +39,8 @@
     "@storybook/addon-links": "^5.1.9",
     "@storybook/react": "^5.1.9",
     "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0"
+    "enzyme-adapter-react-16": "^1.14.0",
+    "husky": "^3.0.2"
   },
   "author": "Iqbal Ahmed",
   "license": "ISC"
