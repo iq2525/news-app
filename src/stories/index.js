@@ -36,7 +36,15 @@ const propsCountrySelectorPanel2 = {
   isLoading: true
 };
 
-const propsTopStoriesPanel = ["Story 1", "Story 2"];
+const propsTopStoriesPanel = {
+  stories: ["Story 1", "Story 2", "Story 3", "Story 4", "Story 5"],
+  isLoading: false
+};
+
+const propsTopStoriesPanelLoading = {
+  stories: ["Story 1", "Story 2", "Story 3", "Story 4", "Story 5"],
+  isLoading: true
+};
 
 storiesOf("CountrySelectorPanel", module)
   .add("default state", () => (
@@ -47,7 +55,8 @@ storiesOf("CountrySelectorPanel", module)
   ));
 
 storiesOf("TopStoriesPanel", module)
-  .add("empty state", () => <TopStoriesPanel />)
-  .add("contains 2 stories", () => (
-    <TopStoriesPanel {...propsTopStoriesPanel} />
+  .add("empty state", () => <TopStoriesPanel isLoading={false} />)
+  .add("5 stories", () => <TopStoriesPanel {...propsTopStoriesPanel} />)
+  .add("loading state", () => (
+    <TopStoriesPanel {...propsTopStoriesPanelLoading} />
   ));
