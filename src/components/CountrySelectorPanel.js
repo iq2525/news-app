@@ -1,19 +1,23 @@
-import React from 'react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const CountryButton = styled.button`
   width: 300px;
-`
-CountryButton.displayName = 'CountryButton'
+`;
+CountryButton.displayName = "CountryButton";
 
-const CountrySelectorPanel = ({ countries }) => {
+const CountrySelectorPanel = ({ countries, isLoading }) => {
   return (
-  <div>
-    {countries.map((country, id) => <CountryButton key={id}>{country.name}</CountryButton>)}
-  </div>
-  )
-}
+    <div>
+      {countries.map((country, id) => (
+        <CountryButton disabled={isLoading} key={id}>
+          {country.name}
+        </CountryButton>
+      ))}
+    </div>
+  );
+};
 
 CountrySelectorPanel.propTypes = {
   countries: PropTypes.arrayOf(
@@ -22,6 +26,7 @@ CountrySelectorPanel.propTypes = {
       code: PropTypes.string
     })
   ).isRequired,
-}
+  isLoading: PropTypes.bool.isRequired
+};
 
-export default CountrySelectorPanel
+export default CountrySelectorPanel;

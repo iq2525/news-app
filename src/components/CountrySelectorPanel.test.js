@@ -25,7 +25,8 @@ const props = {
       name: "USA",
       code: "au"
     }
-  ]
+  ],
+  isLoading: false
 };
 
 describe("<CountrySelectorPanel />", () => {
@@ -39,5 +40,28 @@ describe("<CountrySelectorPanel />", () => {
     expect(buttons.at(2).text()).toEqual(props.countries[2].name);
     expect(buttons.at(3).text()).toEqual(props.countries[3].name);
     expect(buttons.at(4).text()).toEqual(props.countries[4].name);
+  });
+
+  it("renders loading state", () => {
+    const props2 = { ...props, isLoading: true };
+    const wrapper = shallow(<CountrySelectorPanel {...props2} />);
+
+    const buttons = wrapper.find("CountryButton");
+    expect(buttons.length).toEqual(5);
+    expect(buttons.at(0).prop("disabled")).toEqual(true);
+    expect(buttons.at(0).prop("disabled")).toEqual(true);
+    expect(buttons.at(0).prop("disabled")).toEqual(true);
+    expect(
+      buttons
+        .at(3)
+        .at(0)
+        .prop("disabled")
+    ).toEqual(true);
+    expect(
+      buttons
+        .at(4)
+        .at(0)
+        .prop("disabled")
+    ).toEqual(true);
   });
 });
