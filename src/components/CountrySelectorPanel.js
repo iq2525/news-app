@@ -9,13 +9,13 @@ CountryButton.displayName = "CountryButton";
 
 const CountrySelectorPanel = ({ countries, isLoading }) => {
   return (
-    <div>
+    <section>
       {countries.map((country, id) => (
         <CountryButton disabled={isLoading} key={id}>
           {country.name}
         </CountryButton>
       ))}
-    </div>
+    </section>
   );
 };
 
