@@ -17,6 +17,9 @@ describe("<TopStoriesPanel />", () => {
   it("renders component with 2 stories", () => {
     const wrapper = shallow(<TopStoriesPanel {...props} />);
 
-    expect(wrapper.find("Story").length).toEqual(2);
+    const stories = wrapper.find("Story");
+    expect(stories.length).toEqual(2);
+    expect(stories.at(0).text()).toEqual(props.stories[0]);
+    expect(stories.at(1).text()).toEqual(props.stories[1]);
   });
 });
