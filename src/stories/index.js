@@ -27,14 +27,24 @@ const propsCountrySelectorPanel = {
       name: "USA",
       code: "au"
     }
-  ]
+  ],
+  isLoading: false
+};
+
+const propsCountrySelectorPanel2 = {
+  ...propsCountrySelectorPanel,
+  isLoading: true
 };
 
 const propsTopStoriesPanel = ["Story 1", "Story 2"];
 
-storiesOf("CountrySelectorPanel", module).add("default state", () => (
-  <CountrySelectorPanel {...propsCountrySelectorPanel} />
-));
+storiesOf("CountrySelectorPanel", module)
+  .add("default state", () => (
+    <CountrySelectorPanel {...propsCountrySelectorPanel} />
+  ))
+  .add("loading state", () => (
+    <CountrySelectorPanel {...propsCountrySelectorPanel2} />
+  ));
 
 storiesOf("TopStoriesPanel", module)
   .add("empty state", () => <TopStoriesPanel />)
