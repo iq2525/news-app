@@ -14,20 +14,24 @@ const Story = styled.div`
 `;
 Story.displayName = "Story";
 
-const TopStoriesPanel = ({ stories, isLoading }) => {
-  return (
-    <Container>
-      {isLoading
-        ? "Loading..."
-        : stories &&
-          stories.map((story, id) => <Story key={id}>{story}</Story>)}
-    </Container>
-  );
+const TopStoriesPanel = ({ stories, isLoading, isError }) => {
+  let content;
+
+  if (isError) {
+    content = "Error. Please try again.";
+  } else if (isLoading) {
+    content = "Loading...";
+  } else if (stories && stories.length) {
+    content = stories.map((story, id) => <Story key={id}>{story}</Story>);
+  }
+
+  return <Container>{content}</Container>;
 };
 
 TopStoriesPanel.propTypes = {
   stories: PropTypes.arrayOf(PropTypes.string),
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired
 };
 
 export default TopStoriesPanel;
