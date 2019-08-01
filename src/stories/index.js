@@ -38,12 +38,20 @@ const propsCountrySelectorPanel2 = {
 
 const propsTopStoriesPanel = {
   stories: ["Story 1", "Story 2", "Story 3", "Story 4", "Story 5"],
-  isLoading: false
+  isLoading: false,
+  isError: false
 };
 
 const propsTopStoriesPanelLoading = {
   stories: ["Story 1", "Story 2", "Story 3", "Story 4", "Story 5"],
-  isLoading: true
+  isLoading: true,
+  isError: false
+};
+
+const propsTopStoriesPanelError = {
+  stories: [],
+  isLoading: false,
+  isError: true
 };
 
 storiesOf("CountrySelectorPanel", module)
@@ -59,4 +67,5 @@ storiesOf("TopStoriesPanel", module)
   .add("5 stories", () => <TopStoriesPanel {...propsTopStoriesPanel} />)
   .add("loading state", () => (
     <TopStoriesPanel {...propsTopStoriesPanelLoading} />
-  ));
+  ))
+  .add("error state", () => <TopStoriesPanel {...propsTopStoriesPanelError} />);
