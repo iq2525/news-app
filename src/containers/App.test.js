@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { shallow } from "enzyme";
+import { countries } from "../constants/app";
 
 const props = {
   stories: ["Story 1"],
@@ -9,37 +10,19 @@ const props = {
   isError: false
 };
 
-const countries = [
-  {
-    name: "Australia",
-    code: "au"
-  },
-  {
-    name: "France",
-    code: "fr"
-  },
-  {
-    name: "India",
-    code: "in"
-  },
-  {
-    name: "UK",
-    code: "au"
-  },
-  {
-    name: "USA",
-    code: "au"
-  }
-];
-
 describe("<App />", () => {
   it("renders without crashing", () => {
     const wrapper = shallow(<App {...props} />);
 
     const CountrySelectorPanel = wrapper.find("CountrySelectorPanel");
     expect(CountrySelectorPanel.length).toEqual(1);
-    //TODO more tests
+    expect(CountrySelectorPanel.prop("countries")).toEqual(countries);
+    expect(CountrySelectorPanel.prop("isLoading")).toEqual(props.isLoading);
+    expect(CountrySelectorPanel.prop("isError")).toEqual(props.isError);
+
     const TopStoriesPanel = wrapper.find("TopStoriesPanel");
     expect(TopStoriesPanel.length).toEqual(1);
+    expect(TopStoriesPanel.prop("stories")).toEqual(props.stories);
+    expect(TopStoriesPanel.prop("isLoading")).toEqual(props.isLoading);
   });
 });

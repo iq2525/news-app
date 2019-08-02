@@ -39,8 +39,18 @@ const App = ({ stories, isLoading, isError }) => {
         <h1>News App</h1>
       </header>
 
-      <CountrySelectorPanel isLoading countries={countries} />
-      <TopStoriesPanel stories isLoading isError />
+      <CountrySelectorPanel
+        isLoading={isLoading}
+        countries={countries}
+        isError={isError}
+      />
+      {stories && (
+        <TopStoriesPanel
+          stories={stories}
+          isLoading={isLoading}
+          isError={isError}
+        />
+      )}
 
       <footer />
     </div>
