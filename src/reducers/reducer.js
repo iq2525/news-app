@@ -1,11 +1,11 @@
 import { REQUEST_STORIES } from "../constants/app";
 
-const defaultState = {
+const initialState = {
   isLoading: false,
   isError: false
 };
 
-const reducer = (state = defaultState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_STORIES:
       return {
