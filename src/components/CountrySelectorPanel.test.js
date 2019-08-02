@@ -1,31 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-
+import { COUNTRIES } from "../constants/app";
 import CountrySelectorPanel from "./CountrySelectorPanel";
 
 const props = {
-  countries: [
-    {
-      name: "Australia",
-      code: "au"
-    },
-    {
-      name: "France",
-      code: "fr"
-    },
-    {
-      name: "India",
-      code: "in"
-    },
-    {
-      name: "UK",
-      code: "au"
-    },
-    {
-      name: "USA",
-      code: "au"
-    }
-  ],
+  countries: COUNTRIES,
   isLoading: false
 };
 

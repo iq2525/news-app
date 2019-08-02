@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import TopStoriesPanel from "../components/TopStoriesPanel";
 import CountrySelectorPanel from "../components/CountrySelectorPanel";
-import { countries } from "../constants/app";
+import { COUNTRIES } from "../constants/app";
 
 const Content = styled.section`
   width: 100%;
@@ -19,7 +19,7 @@ const App = ({ stories, isLoading, isError }) => {
 
       <CountrySelectorPanel
         isLoading={isLoading}
-        countries={countries}
+        countries={COUNTRIES}
         isError={isError}
       />
       {stories && (
