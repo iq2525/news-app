@@ -20,3 +20,5 @@ export const COUNTRIES = [
     code: "au"
   }
 ];
+
+export const REQUEST_STORIES = "REQUEST_STORIES";
