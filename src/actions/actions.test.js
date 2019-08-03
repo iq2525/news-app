@@ -16,7 +16,6 @@ import {
   NEWS_API_COUNTRY_PARAM
 } from "../constants/app";
 import fetchMock from "fetch-mock";
-import { NEWS_API_ENDPOINT_WITH_PARAMS } from "../constants/app";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
