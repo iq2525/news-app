@@ -2,7 +2,10 @@ import {
   REQUEST_STORIES,
   FETCH_SUCCESS,
   FETCH_FAILURE,
-  NEWS_API_ENDPOINT_WITH_PARAMS
+  NEWS_API_ENDPOINT,
+  NEWS_API_KEY,
+  NEWS_API_PAGE_SIZE,
+  NEWS_API_COUNTRY_PARAM
 } from "../constants/app";
 
 export const requestStories = countryCode => ({
@@ -23,7 +26,8 @@ export const fetchFailure = ex => ({
 export const fetchStories = countryCode => dispatch => {
   dispatch(requestStories(countryCode));
 
-  return fetch(NEWS_API_ENDPOINT_WITH_PARAMS)
+  const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY}&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${countryCode}`;
+  return fetch(endPoint)
     .then(res => res.json())
     .then(body => dispatch(fetchSuccess(body)))
     .catch(ex => dispatch(fetchFailure(ex)));

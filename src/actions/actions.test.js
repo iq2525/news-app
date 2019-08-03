@@ -9,7 +9,11 @@ import thunk from "redux-thunk";
 import {
   REQUEST_STORIES,
   FETCH_SUCCESS,
-  FETCH_FAILURE
+  FETCH_FAILURE,
+  NEWS_API_ENDPOINT,
+  NEWS_API_KEY,
+  NEWS_API_PAGE_SIZE,
+  NEWS_API_COUNTRY_PARAM
 } from "../constants/app";
 import fetchMock from "fetch-mock";
 import { NEWS_API_ENDPOINT_WITH_PARAMS } from "../constants/app";
@@ -51,39 +55,43 @@ describe("actions", () => {
 
   it("should call REQUEST_STORIES & async FETCH_SUCCESS when fetchStories is done", () => {
     const fetchBody = { stories: ["story 1"] };
-    fetchMock.getOnce(NEWS_API_ENDPOINT_WITH_PARAMS, {
+    const countryCode = "au";
+    const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY}&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${countryCode}`;
+
+    fetchMock.getOnce(endPoint, {
       body: fetchBody,
       headers: { "content-type": "application/json" }
     });
 
-    const COUNTRY_CODE = "au";
     const expectedActions = [
-      { type: REQUEST_STORIES, countryCode: COUNTRY_CODE },
+      { type: REQUEST_STORIES, countryCode: countryCode },
       { type: FETCH_SUCCESS, body: fetchBody }
     ];
 
     const store = mockStore({ countries: [], isLoading: true, isError: false });
 
-    return store.dispatch(fetchStories(COUNTRY_CODE)).then(() => {
+    return store.dispatch(fetchStories(countryCode)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
   it("should call REQUEST_STORIES & async FETCH_FAILURE when fetchStories fail", () => {
     const fetchFailure = "Fetch Error";
-    fetchMock.getOnce(NEWS_API_ENDPOINT_WITH_PARAMS, {
+    const countryCode = "au";
+    const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY}&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${countryCode}`;
+
+    fetchMock.getOnce(endPoint, {
       throws: fetchFailure
     });
 
-    const COUNTRY_CODE = "au";
     const expectedActions = [
-      { type: REQUEST_STORIES, countryCode: COUNTRY_CODE },
+      { type: REQUEST_STORIES, countryCode: countryCode },
       { type: FETCH_FAILURE, ex: fetchFailure }
     ];
 
     const store = mockStore({ countries: [], isLoading: true, isError: false });
 
-    return store.dispatch(fetchStories(COUNTRY_CODE)).then(() => {
+    return store.dispatch(fetchStories(countryCode)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
