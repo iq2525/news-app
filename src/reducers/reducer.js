@@ -1,4 +1,8 @@
-import { REQUEST_STORIES, FETCH_SUCCESS } from "../constants/app";
+import {
+  REQUEST_STORIES,
+  FETCH_SUCCESS,
+  FETCH_FAILURE
+} from "../constants/app";
 
 const initialState = {
   isLoading: false,
@@ -19,6 +23,13 @@ const reducer = (state = initialState, action) => {
         isLoading: false,
         isError: false,
         stories: action.body.articles
+      };
+    case FETCH_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        stories: null
       };
     default:
       return state;

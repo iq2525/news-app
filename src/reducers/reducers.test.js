@@ -1,5 +1,9 @@
 import reducer from "../reducers/reducer";
-import { REQUEST_STORIES, FETCH_SUCCESS } from "../constants/app";
+import {
+  REQUEST_STORIES,
+  FETCH_SUCCESS,
+  FETCH_FAILURE
+} from "../constants/app";
 import { classBody } from "@babel/types";
 
 describe("actions", () => {
@@ -42,6 +46,26 @@ describe("actions", () => {
       isLoading: false,
       isError: false,
       stories: responseBody.articles
+    });
+  });
+
+  it("should handle FETCH_FAILURE", () => {
+    const errorBody = {
+      articles: "Articles"
+    };
+
+    expect(
+      reducer(
+        {},
+        {
+          type: FETCH_FAILURE,
+          ex: errorBody
+        }
+      )
+    ).toEqual({
+      isLoading: false,
+      isError: true,
+      stories: null
     });
   });
 });
