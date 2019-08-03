@@ -33,7 +33,11 @@ export const App = ({ stories, isLoading, isError, fetchStories }) => {
         />
       )}
 
-      <footer />
+      <footer>
+        <div>
+          Powered by <a href="https://newsapi.org/">NewsAPI.org</a>
+        </div>
+      </footer>
     </div>
   );
 };
