@@ -10,7 +10,8 @@ describe("actions", () => {
   it("should return then initial state", () => {
     expect(reducer(undefined, {})).toEqual({
       isLoading: false,
-      isError: false
+      isError: false,
+      stories: null
     });
   });
 
@@ -25,7 +26,8 @@ describe("actions", () => {
       )
     ).toEqual({
       isLoading: true,
-      isError: false
+      isError: false,
+      stories: null
     });
   });
 
