@@ -23,3 +23,4 @@ export const COUNTRIES = [
 
 export const REQUEST_STORIES = "REQUEST_STORIES";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
+export const FETCH_FAILURE = "FETCH_FAILURE";

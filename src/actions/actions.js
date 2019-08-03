@@ -1,4 +1,8 @@
-import { REQUEST_STORIES, FETCH_SUCCESS } from "../constants/app";
+import {
+  REQUEST_STORIES,
+  FETCH_SUCCESS,
+  FETCH_FAILURE
+} from "../constants/app";
 
 export const requestStories = countryCode => ({
   type: REQUEST_STORIES,
@@ -8,6 +12,11 @@ export const requestStories = countryCode => ({
 export const fetchSuccess = body => ({
   type: FETCH_SUCCESS,
   body
+});
+
+export const fetchFailure = ex => ({
+  type: FETCH_FAILURE,
+  ex
 });
 
 export const fetchStories = countryCode => dispatch => {

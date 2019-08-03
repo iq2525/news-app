@@ -1,7 +1,16 @@
 import configureMockStore from "redux-mock-store";
-import { fetchStories, requestStories, fetchSuccess } from "./actions";
+import {
+  fetchStories,
+  requestStories,
+  fetchSuccess,
+  fetchFailure
+} from "./actions";
 import thunk from "redux-thunk";
-import { REQUEST_STORIES, FETCH_SUCCESS } from "../constants/app";
+import {
+  REQUEST_STORIES,
+  FETCH_SUCCESS,
+  FETCH_FAILURE
+} from "../constants/app";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -23,6 +32,15 @@ describe("actions", () => {
       body
     };
     expect(fetchSuccess(body)).toEqual(expectedAction);
+  });
+
+  it("should create FETCH_FAILURE action", () => {
+    const ex = "ex";
+    const expectedAction = {
+      type: FETCH_FAILURE,
+      ex
+    };
+    expect(fetchFailure(ex)).toEqual(expectedAction);
   });
 
   it("should call REQUEST_STORIES action when fetchStories is called", () => {
