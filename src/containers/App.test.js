@@ -2,11 +2,13 @@ import React from "react";
 import { App } from "./App";
 import { shallow } from "enzyme";
 import { COUNTRIES } from "../constants/app";
+import { jsxEmptyExpression } from "@babel/types";
 
 const props = {
   stories: ["Story 1"],
   isLoading: false,
-  isError: false
+  isError: false,
+  fetchStories: jest.fn()
 };
 
 describe("<App />", () => {
@@ -18,6 +20,9 @@ describe("<App />", () => {
     expect(CountrySelectorPanel.prop("countries")).toEqual(COUNTRIES);
     expect(CountrySelectorPanel.prop("isLoading")).toEqual(props.isLoading);
     expect(CountrySelectorPanel.prop("isError")).toEqual(props.isError);
+    expect(CountrySelectorPanel.prop("fetchStories")).toEqual(
+      props.fetchStories
+    );
 
     const TopStoriesPanel = wrapper.find("TopStoriesPanel");
     expect(TopStoriesPanel.length).toEqual(1);

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import TopStoriesPanel from "../components/TopStoriesPanel";
 import CountrySelectorPanel from "../components/CountrySelectorPanel";
 import { COUNTRIES } from "../constants/app";
+import { fetchStories } from "../actions/actions";
 
 const Content = styled.section`
   width: 100%;
@@ -11,7 +12,7 @@ const Content = styled.section`
 `;
 Content.displayName = "Content";
 
-export const App = ({ stories, isLoading, isError }) => {
+export const App = ({ stories, isLoading, isError, fetchStories }) => {
   return (
     <div>
       <header>
@@ -22,6 +23,7 @@ export const App = ({ stories, isLoading, isError }) => {
         isLoading={isLoading}
         countries={COUNTRIES}
         isError={isError}
+        fetchStories={fetchStories}
       />
       {stories && (
         <TopStoriesPanel
@@ -45,4 +47,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchStories: countryCode => dispatch(fetchStories(countryCode))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
