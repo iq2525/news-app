@@ -18,9 +18,9 @@ export const fetchSuccess = body => ({
   body
 });
 
-export const fetchFailure = ex => ({
+export const fetchFailure = error => ({
   type: FETCH_FAILURE,
-  ex
+  error
 });
 
 export const fetchStories = countryCode => dispatch => {
@@ -30,5 +30,5 @@ export const fetchStories = countryCode => dispatch => {
   return fetch(endPoint)
     .then(res => res.json())
     .then(body => dispatch(fetchSuccess(body)))
-    .catch(ex => dispatch(fetchFailure(ex)));
+    .catch(error => dispatch(fetchFailure(error)));
 };

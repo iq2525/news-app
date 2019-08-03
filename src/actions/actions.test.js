@@ -45,12 +45,12 @@ describe("actions", () => {
   });
 
   it("should create FETCH_FAILURE action", () => {
-    const ex = "ex";
+    const error = "error";
     const expectedAction = {
       type: FETCH_FAILURE,
-      ex
+      error
     };
-    expect(fetchFailure(ex)).toEqual(expectedAction);
+    expect(fetchFailure(error)).toEqual(expectedAction);
   });
 
   it("should call REQUEST_STORIES & async FETCH_SUCCESS when fetchStories is done", () => {
@@ -86,7 +86,7 @@ describe("actions", () => {
 
     const expectedActions = [
       { type: REQUEST_STORIES, countryCode: countryCode },
-      { type: FETCH_FAILURE, ex: fetchFailure }
+      { type: FETCH_FAILURE, error: fetchFailure }
     ];
 
     const store = mockStore({ countries: [], isLoading: true, isError: false });
