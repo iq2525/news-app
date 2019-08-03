@@ -1,7 +1,8 @@
 import {
   REQUEST_STORIES,
   FETCH_SUCCESS,
-  FETCH_FAILURE
+  FETCH_FAILURE,
+  NEWS_API_ENDPOINT_WITH_PARAMS
 } from "../constants/app";
 
 export const requestStories = countryCode => ({
@@ -20,7 +21,10 @@ export const fetchFailure = ex => ({
 });
 
 export const fetchStories = countryCode => dispatch => {
-  dispatch(requestStories(countryCode)); //Sets loading state
+  dispatch(requestStories(countryCode));
+  console.log("NEWS_API_ENDPOINT_WITH_PARAMS: ", NEWS_API_ENDPOINT_WITH_PARAMS);
+  return fetch(NEWS_API_ENDPOINT_WITH_PARAMS)
+    .then(res => res.json())
+    .then(body => dispatch(fetchSuccess(body)))
+    .catch(ex => dispatch(fetchFailure(ex)));
 };
-
-//https://newsapi.org/v2/top-headlines?country=us&pageSize=5&apiKey=971ea0c019c44f2295c42cb972032a67

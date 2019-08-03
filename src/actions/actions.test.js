@@ -11,11 +11,17 @@ import {
   FETCH_SUCCESS,
   FETCH_FAILURE
 } from "../constants/app";
+import fetchMock from "fetch-mock";
+import { NEWS_API_ENDPOINT_WITH_PARAMS } from "../constants/app";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe("actions", () => {
+  afterEach(() => {
+    fetchMock.restore();
+  });
+
   it("should create action to request Top Stories", () => {
     const countryCode = "au";
     const expectedAction = {
@@ -43,12 +49,23 @@ describe("actions", () => {
     expect(fetchFailure(ex)).toEqual(expectedAction);
   });
 
-  it("should call REQUEST_STORIES action when fetchStories is called", () => {
-    const expectedActions = [{ type: REQUEST_STORIES, countryCode: "au" }];
+  it("should call REQUEST_STORIES & async FETCH_SUCCESS when fetchStories is done", () => {
+    const fetchBody = { stories: ["story 1"] };
+    fetchMock.getOnce(NEWS_API_ENDPOINT_WITH_PARAMS, {
+      body: fetchBody,
+      headers: { "content-type": "application/json" }
+    });
+
+    const COUNTRY_CODE = "au";
+    const expectedActions = [
+      { type: REQUEST_STORIES, countryCode: COUNTRY_CODE },
+      { type: FETCH_SUCCESS, body: fetchBody }
+    ];
 
     const store = mockStore({ countries: [], isLoading: true, isError: false });
 
-    store.dispatch(fetchStories("au"));
-    expect(store.getActions()).toEqual(expectedActions);
+    return store.dispatch(fetchStories(COUNTRY_CODE)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
   });
 });
