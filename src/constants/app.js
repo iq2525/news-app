@@ -22,3 +22,4 @@ export const COUNTRIES = [
 ];
 
 export const REQUEST_STORIES = "REQUEST_STORIES";
+export const FETCH_SUCCESS = "FETCH_SUCCESS";
