@@ -1,19 +1,17 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
+import CountryButton from "./CountryButton";
 
-const CountryButton = styled.button`
-  width: 300px;
-`;
-CountryButton.displayName = "CountryButton";
-
-const CountrySelectorPanel = ({ countries, isLoading }) => {
+const CountrySelectorPanel = ({ countries, isLoading, fetchStories }) => {
   return (
     <section>
       {countries.map((country, id) => (
-        <CountryButton disabled={isLoading} key={id}>
-          {country.name}
-        </CountryButton>
+        <CountryButton
+          key={id}
+          country={country}
+          isLoading={isLoading}
+          fetchStories={fetchStories}
+        />
       ))}
     </section>
   );
