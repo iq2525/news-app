@@ -21,7 +21,8 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "test:watch": "react-scripts test",
-    "test:no-cache": "react-scripts test --noCache=true"
+    "test:no-cache": "react-scripts test --noCache=true",
+    "eslint": "eslint ./src/**/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,7 +55,7 @@
   "license": "ISC",
   "husky": {
     "hooks": {
-      "pre-commit": "npm test && eslint ./src/**/*.js"
+      "pre-commit": "npm test && npm run eslint"
     }
   }
 }
