@@ -16,7 +16,6 @@ describe("<CountrySelectorPanel />", () => {
     const buttons = wrapper.find("CountryButton");
     expect(buttons.length).toEqual(5);
 
-    console.log("country: ", buttons.at(0).prop("isLoading"));
     expect(buttons.at(0).prop("country")).toEqual(COUNTRIES[0]);
     expect(buttons.at(0).prop("isLoading")).toEqual(props.isLoading);
     expect(buttons.at(0).prop("fetchStories")).toEqual(props.fetchStories);
