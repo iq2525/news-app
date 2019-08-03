@@ -8,8 +8,12 @@ const Button = styled.button`
 Button.displayName = "Button";
 
 const CountryButton = ({ country, isLoading, fetchStories }) => {
+  const countryCode = country.code;
   return (
-    <Button disabled={isLoading} onClick={fetchStories(country.code)}>
+    <Button
+      disabled={isLoading}
+      onClick={countryCode => fetchStories(country.code)}
+    >
       {country.name}
     </Button>
   );
