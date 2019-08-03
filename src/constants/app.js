@@ -17,7 +17,7 @@ export const COUNTRIES = [
   },
   {
     name: "USA",
-    code: "au"
+    code: "us"
   }
 ];
 
