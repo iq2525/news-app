@@ -22,7 +22,7 @@ export const fetchFailure = ex => ({
 
 export const fetchStories = countryCode => dispatch => {
   dispatch(requestStories(countryCode));
-  console.log("NEWS_API_ENDPOINT_WITH_PARAMS: ", NEWS_API_ENDPOINT_WITH_PARAMS);
+
   return fetch(NEWS_API_ENDPOINT_WITH_PARAMS)
     .then(res => res.json())
     .then(body => dispatch(fetchSuccess(body)))

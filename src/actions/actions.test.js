@@ -68,4 +68,23 @@ describe("actions", () => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
+
+  it("should call REQUEST_STORIES & async FETCH_FAILURE when fetchStories fail", () => {
+    const fetchFailure = "Fetch Error";
+    fetchMock.getOnce(NEWS_API_ENDPOINT_WITH_PARAMS, {
+      throws: fetchFailure
+    });
+
+    const COUNTRY_CODE = "au";
+    const expectedActions = [
+      { type: REQUEST_STORIES, countryCode: COUNTRY_CODE },
+      { type: FETCH_FAILURE, ex: fetchFailure }
+    ];
+
+    const store = mockStore({ countries: [], isLoading: true, isError: false });
+
+    return store.dispatch(fetchStories(COUNTRY_CODE)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
 });
