@@ -1,6 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
+import { App } from "./App";
 import { shallow } from "enzyme";
 import { COUNTRIES } from "../constants/app";
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import TopStoriesPanel from "../components/TopStoriesPanel";
 import CountrySelectorPanel from "../components/CountrySelectorPanel";
@@ -10,7 +11,7 @@ const Content = styled.section`
 `;
 Content.displayName = "Content";
 
-const App = ({ stories, isLoading, isError }) => {
+export const App = ({ stories, isLoading, isError }) => {
   return (
     <div>
       <header>
@@ -35,4 +36,13 @@ const App = ({ stories, isLoading, isError }) => {
   );
 };
 
-export default App;
+const mapStateToProps = state => {
+  const { stories, isLoading, isError } = state;
+  return {
+    stories,
+    isLoading,
+    isError
+  };
+};
+
+export default connect(mapStateToProps)(App);
