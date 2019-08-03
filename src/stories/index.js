@@ -1,34 +1,17 @@
 import React from "react";
 
 import { storiesOf } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 
 import CountrySelectorPanel from "../components/CountrySelectorPanel";
 import TopStoriesPanel from "../components/TopStoriesPanel";
+import CountryButton from "../components/CountryButton";
+import { COUNTRIES } from "../constants/app";
 
 const propsCountrySelectorPanel = {
-  countries: [
-    {
-      name: "Australia",
-      code: "au"
-    },
-    {
-      name: "France",
-      code: "fr"
-    },
-    {
-      name: "India",
-      code: "in"
-    },
-    {
-      name: "UK",
-      code: "au"
-    },
-    {
-      name: "USA",
-      code: "au"
-    }
-  ],
-  isLoading: false
+  countries: COUNTRIES,
+  isLoading: false,
+  fetchStories: () => {}
 };
 
 const propsCountrySelectorPanel2 = {
@@ -60,6 +43,22 @@ storiesOf("CountrySelectorPanel", module)
   ))
   .add("loading state", () => (
     <CountrySelectorPanel {...propsCountrySelectorPanel2} />
+  ));
+
+storiesOf("CountryButton", module)
+  .add("default state", () => (
+    <CountryButton
+      country={COUNTRIES[0]}
+      isLoading={false}
+      fetchStories={action("clicked")}
+    />
+  ))
+  .add("loading state", () => (
+    <CountryButton
+      country={COUNTRIES[0]}
+      isLoading={true}
+      fetchStories={action("clicked")}
+    />
   ));
 
 storiesOf("TopStoriesPanel", module)
