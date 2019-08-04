@@ -50,13 +50,21 @@ const StatusBar = styled.section`
 `;
 StatusBar.displayName = "StatusBar";
 
-export const App = ({ stories, isLoading, isError, fetchStories }) => {
+export const App = ({
+  stories,
+  isLoading,
+  isError,
+  selectedCountry,
+  fetchStories
+}) => {
   let statusText = "";
 
   if (isLoading) {
     statusText = LOADING_TEXT;
   } else if (isError) {
     statusText = ERROR_TEXT;
+  } else if (selectedCountry) {
+    statusText = `Top 5 Stories for: ${selectedCountry}`;
   }
 
   return (
@@ -100,21 +108,23 @@ App.propTypes = {
       urlToImage: PropTypes.string
     })
   ),
-  fetchStories: PropTypes.func.isRequired
+  fetchStories: PropTypes.func.isRequired,
+  selectedCountry: PropTypes.string
 };
 
 const mapStateToProps = state => {
-  const { stories, isLoading, isError } = state;
+  const { stories, isLoading, isError, selectedCountry } = state;
   return {
     stories,
     isLoading,
-    isError
+    isError,
+    selectedCountry
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchStories: countryCode => dispatch(fetchStories(countryCode))
+    fetchStories: country => dispatch(fetchStories(country))
   };
 };
 

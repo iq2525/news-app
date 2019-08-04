@@ -21,7 +21,8 @@ const props = {
   ],
   isLoading: false,
   isError: false,
-  fetchStories: jest.fn()
+  fetchStories: jest.fn(),
+  selectedCountry: null
 };
 
 describe("<App />", () => {
@@ -72,5 +73,21 @@ describe("<App />", () => {
 
     const TopStoriesPanel = wrapper.find("TopStoriesPanel");
     expect(TopStoriesPanel.length).toEqual(0);
+  });
+
+  it("renders success state", () => {
+    const propsSuccess = { ...props, selectedCountry: COUNTRIES[0].name };
+    const wrapper = shallow(<App {...propsSuccess} />);
+
+    const StatusBar = wrapper.find("StatusBar");
+    expect(StatusBar.text()).toEqual(
+      `Top 5 Stories for: ${propsSuccess.selectedCountry}`
+    );
+
+    const CountrySelectorPanel = wrapper.find("CountrySelectorPanel");
+    expect(CountrySelectorPanel.length).toEqual(1);
+
+    const TopStoriesPanel = wrapper.find("TopStoriesPanel");
+    expect(TopStoriesPanel.length).toEqual(1);
   });
 });
