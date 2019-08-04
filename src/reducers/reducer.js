@@ -7,7 +7,8 @@ import {
 const initialState = {
   isLoading: false,
   isError: false,
-  stories: null
+  stories: null,
+  selectedCountry: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,7 +18,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         isLoading: true,
         isError: false,
-        stories: null
+        stories: null,
+        selectedCountry: action.country.name
       };
     case FETCH_SUCCESS:
       return {
@@ -31,7 +33,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: true,
-        stories: null
+        stories: null,
+        selectedCountry: null
       };
     default:
       return state;

@@ -2,16 +2,18 @@ import reducer from "../reducers/reducer";
 import {
   REQUEST_STORIES,
   FETCH_SUCCESS,
-  FETCH_FAILURE
+  FETCH_FAILURE,
+  COUNTRIES
 } from "../constants/app";
-import { classBody } from "@babel/types";
+import { statement } from "@babel/template";
 
 describe("actions", () => {
   it("should return then initial state", () => {
     expect(reducer(undefined, {})).toEqual({
       isLoading: false,
       isError: false,
-      stories: null
+      stories: null,
+      selectedCountry: null
     });
   });
 
@@ -21,13 +23,14 @@ describe("actions", () => {
         {},
         {
           type: REQUEST_STORIES,
-          countryCode: "au"
+          country: COUNTRIES[0]
         }
       )
     ).toEqual({
       isLoading: true,
       isError: false,
-      stories: null
+      stories: null,
+      selectedCountry: COUNTRIES[0].name
     });
   });
 
@@ -38,7 +41,12 @@ describe("actions", () => {
 
     expect(
       reducer(
-        {},
+        {
+          isLoading: true,
+          isError: false,
+          stories: null,
+          selectedCountry: COUNTRIES[0].name
+        },
         {
           type: FETCH_SUCCESS,
           body: responseBody
@@ -47,7 +55,8 @@ describe("actions", () => {
     ).toEqual({
       isLoading: false,
       isError: false,
-      stories: responseBody.articles
+      stories: responseBody.articles,
+      selectedCountry: COUNTRIES[0].name
     });
   });
 
@@ -67,7 +76,8 @@ describe("actions", () => {
     ).toEqual({
       isLoading: false,
       isError: true,
-      stories: null
+      stories: null,
+      selectedCountry: null
     });
   });
 });
