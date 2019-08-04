@@ -27,6 +27,7 @@
 - [Responsive Design](#responsive-design)
 - [Enzyme for React Unit Testing](#enzyme-for-react-unit-testing)
 - [Error State](#error-state)
+- [Git hooks](#git-hooks)
 - [Pull Request](#pull-request)
 - [Future Enhancements](#future-enhancements)
 - [Task Feedback](#task-feedback)
@@ -146,6 +147,16 @@ This App used [Enzyme](https://airbnb.io/enzyme/) for testing the React componen
 
 ## Error State
 The App displays an error if it cannot connect to the News API endpoint.
+
+## Git hooks
+Using [Husky](https://github.com/typicode/husky) to set up Git hooks.
+
+When a commit is done, the following is always run:
+```
+npm test
+npm run eslint
+
+```
 
 ## Pull Request
 Not sure how the Pull Request should be created.  So raised one from the 'master' to 'release' branch:
