@@ -26,11 +26,13 @@ Link.displayName = "Link";
 
 const ImageContainer = styled.div`
   margin: 10px;
+  width: 50%;
 `;
 ImageContainer.displayName = "ImageContainer";
 
 const Content = styled.div`
   margin: 10px;
+  width: 50%;
 `;
 Content.displayName = "Content";
 
