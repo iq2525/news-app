@@ -7,6 +7,13 @@ import { COUNTRIES, LOADING_TEXT, ERROR_TEXT } from "../constants/app";
 import { fetchStories } from "../actions/actions";
 import PropTypes from "prop-types";
 
+const Container = styled.section`
+  width: 100%;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+`;
+Container.displayName = "Container";
+
 const Content = styled.section`
   width: 100%;
   padding: 10px;
@@ -29,7 +36,7 @@ export const App = ({ stories, isLoading, isError, fetchStories }) => {
   }
 
   return (
-    <div>
+    <Container>
       <header>
         <h1>News App</h1>
       </header>
@@ -52,7 +59,7 @@ export const App = ({ stories, isLoading, isError, fetchStories }) => {
           Powered by <a href="https://newsapi.org/">NewsAPI.org</a>
         </div>
       </footer>
-    </div>
+    </Container>
   );
 };
 
