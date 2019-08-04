@@ -6,7 +6,8 @@ import {
   COLOUR_BLUE,
   COLOUR_BLACK,
   COLOUR_WHITE,
-  COLOUR_LIGHT_BLUE
+  COLOUR_LIGHT_BLUE,
+  COLOUR_LIGHT_BLUE_2
 } from "../constants/styling";
 
 const Button = styled.button`
@@ -15,7 +16,7 @@ const Button = styled.button`
   height: 50px;
   margin: 10px;
   border-radius: 5px;
-  background-color: ${COLOUR_LIGHT_GREY};
+  background-color: ${COLOUR_LIGHT_BLUE_2};
   color: ${COLOUR_BLACK};
   font-weight: bold;
   font-size: 13px;
@@ -29,6 +30,11 @@ const Button = styled.button`
   &:active {
     color: ${COLOUR_WHITE};
     background-color: ${COLOUR_LIGHT_BLUE};
+  }
+
+  &:disabled {
+    color: ${COLOUR_WHITE};
+    background-color: ${COLOUR_LIGHT_GREY};
   }
 `;
 Button.displayName = "Button";
