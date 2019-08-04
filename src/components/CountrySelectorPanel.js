@@ -38,7 +38,7 @@ const CountrySelectorPanel = ({ countries, isLoading, fetchStories }) => {
       </Description>
       <AllButtonsContainer>
         {countries.map((country, id) => (
-          <ButtonContainer>
+          <ButtonContainer key={id}>
             <CountryButton
               key={id}
               country={country}
