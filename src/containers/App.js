@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import TopStoriesPanel from "../components/TopStoriesPanel";
 import CountrySelectorPanel from "../components/CountrySelectorPanel";
-import { COUNTRIES } from "../constants/app";
+import { COUNTRIES, LOADING_TEXT, ERROR_TEXT } from "../constants/app";
 import { fetchStories } from "../actions/actions";
+import PropTypes from "prop-types";
 
 const Content = styled.section`
   width: 100%;
@@ -12,26 +13,45 @@ const Content = styled.section`
 `;
 Content.displayName = "Content";
 
+const StatusBar = styled.section`
+  width: 100%;
+  padding: 10px;
+`;
+StatusBar.displayName = "StatusBar";
+
 export const App = ({ stories, isLoading, isError, fetchStories }) => {
+  let statusText = "";
+
+  if (isLoading) {
+    statusText = LOADING_TEXT;
+  } else if (isError) {
+    statusText = ERROR_TEXT;
+  }
+
   return (
     <div>
       <header>
         <h1>News App</h1>
       </header>
 
-      <CountrySelectorPanel
-        isLoading={isLoading}
-        countries={COUNTRIES}
-        isError={isError}
-        fetchStories={fetchStories}
-      />
-      {stories && (
-        <TopStoriesPanel
-          stories={stories}
+      <Content>
+        <CountrySelectorPanel
           isLoading={isLoading}
+          countries={COUNTRIES}
           isError={isError}
+          fetchStories={fetchStories}
         />
-      )}
+
+        <StatusBar>{statusText}</StatusBar>
+
+        {stories && (
+          <TopStoriesPanel
+            stories={stories}
+            isLoading={isLoading}
+            isError={isError}
+          />
+        )}
+      </Content>
 
       <footer>
         <div>
@@ -40,6 +60,20 @@ export const App = ({ stories, isLoading, isError, fetchStories }) => {
       </footer>
     </div>
   );
+};
+
+App.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+  stories: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      description: PropTypes.string,
+      url: PropTypes.string,
+      urlToImage: PropTypes.string
+    })
+  ),
+  fetchStories: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
