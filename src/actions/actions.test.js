@@ -58,7 +58,7 @@ describe("actions", () => {
     const country = COUNTRIES[0];
     const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY_PARAM}${
       process.env.REACT_APP_API_KEY
-    }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${country.countryCode}`;
+    }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${country.code}`;
 
     fetchMock.getOnce(endPoint, {
       body: fetchBody,
@@ -82,7 +82,7 @@ describe("actions", () => {
     const country = COUNTRIES[0];
     const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY_PARAM}${
       process.env.REACT_APP_API_KEY
-    }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${country.countryCode}`;
+    }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${country.code}`;
 
     fetchMock.getOnce(endPoint, {
       throws: fetchFailure

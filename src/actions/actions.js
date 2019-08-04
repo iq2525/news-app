@@ -28,7 +28,8 @@ export const fetchStories = country => dispatch => {
 
   const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY_PARAM}${
     process.env.REACT_APP_API_KEY
-  }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${country.countryCode}`;
+  }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${country.code}`;
+
   return fetch(endPoint)
     .then(res => res.json())
     .then(body => dispatch(fetchSuccess(body)))
