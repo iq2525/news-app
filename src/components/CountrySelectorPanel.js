@@ -33,9 +33,7 @@ const ButtonContainer = styled.div`
 const CountrySelectorPanel = ({ countries, isLoading, fetchStories }) => {
   return (
     <Section>
-      <Description>
-        Click a Country to see the Top 5 Stories from there below:
-      </Description>
+      <Description>Click a Country to see the Top 5 Stories below:</Description>
       <AllButtonsContainer>
         {countries.map((country, id) => (
           <ButtonContainer key={id}>
