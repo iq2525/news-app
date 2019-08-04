@@ -12,9 +12,8 @@ import {
 
 const Button = styled.button`
   box-sizing: border-box;
-  width: 50%;
   height: 50px;
-  margin: 10px;
+  width: 100%;
   border-radius: 5px;
   background-color: ${COLOUR_LIGHT_BLUE_2};
   color: ${COLOUR_BLACK};
