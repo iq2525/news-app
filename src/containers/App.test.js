@@ -43,7 +43,6 @@ describe("<App />", () => {
     const TopStoriesPanel = wrapper.find("TopStoriesPanel");
     expect(TopStoriesPanel.length).toEqual(1);
     expect(TopStoriesPanel.prop("stories")).toEqual(props.stories);
-    expect(TopStoriesPanel.prop("isLoading")).toEqual(props.isLoading);
   });
 
   it("renders loading state", () => {

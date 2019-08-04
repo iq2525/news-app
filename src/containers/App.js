@@ -44,13 +44,7 @@ export const App = ({ stories, isLoading, isError, fetchStories }) => {
 
         <StatusBar>{statusText}</StatusBar>
 
-        {stories && (
-          <TopStoriesPanel
-            stories={stories}
-            isLoading={isLoading}
-            isError={isError}
-          />
-        )}
+        {stories && <TopStoriesPanel stories={stories} />}
       </Content>
 
       <footer>
