@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 Container.displayName = "Container";
 
-const TopStoriesPanel = ({ stories, isLoading, isError }) => {
+const TopStoriesPanel = ({ stories }) => {
   return (
     <Container>
       {stories.map((story, id) => (
@@ -27,9 +27,7 @@ TopStoriesPanel.propTypes = {
       url: PropTypes.string,
       urlToImage: PropTypes.string
     })
-  ),
-  isLoading: PropTypes.bool.isRequired,
-  isError: PropTypes.bool.isRequired
+  )
 };
 
 export default TopStoriesPanel;
