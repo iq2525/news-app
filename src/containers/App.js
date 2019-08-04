@@ -23,10 +23,12 @@ Container.displayName = "Container";
 
 const Content = styled.section`
   width: 100%;
+  margin-bottom: 5px;
 `;
 Content.displayName = "Content";
 
 const StatusBar = styled.section`
+  box-sizing: border-box;
   width: 100%;
   padding: 10px;
   color: ${props =>
@@ -41,7 +43,8 @@ const StatusBar = styled.section`
       : props.isError
       ? COLOUR_RED
       : COLOUR_WHITE};
-  height: 20px;
+  height: 35px;
+  margin-top: 5px;
 `;
 StatusBar.displayName = "StatusBar";
 
