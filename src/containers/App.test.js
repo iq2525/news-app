@@ -47,18 +47,31 @@ describe("<App />", () => {
   });
 
   it("renders loading state", () => {
-    const propsLoading = { ...props, isLoading: true };
+    const propsLoading = { ...props, isLoading: true, stories: null };
     const wrapper = shallow(<App {...propsLoading} />);
 
     const StatusBar = wrapper.find("StatusBar");
     expect(StatusBar.text()).toEqual(LOADING_TEXT);
+
+    const CountrySelectorPanel = wrapper.find("CountrySelectorPanel");
+    expect(CountrySelectorPanel.length).toEqual(1);
+    expect(CountrySelectorPanel.prop("isLoading")).toEqual(true);
+
+    const TopStoriesPanel = wrapper.find("TopStoriesPanel");
+    expect(TopStoriesPanel.length).toEqual(0);
   });
 
   it("renders error state", () => {
-    const propsError = { ...props, isError: true };
+    const propsError = { ...props, isError: true, stories: null };
     const wrapper = shallow(<App {...propsError} />);
 
     const StatusBar = wrapper.find("StatusBar");
     expect(StatusBar.text()).toEqual(ERROR_TEXT);
+
+    const CountrySelectorPanel = wrapper.find("CountrySelectorPanel");
+    expect(CountrySelectorPanel.length).toEqual(1);
+
+    const TopStoriesPanel = wrapper.find("TopStoriesPanel");
+    expect(TopStoriesPanel.length).toEqual(0);
   });
 });
