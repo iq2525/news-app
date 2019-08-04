@@ -5,7 +5,6 @@ import {
   FETCH_FAILURE,
   COUNTRIES
 } from "../constants/app";
-import { statement } from "@babel/template";
 
 describe("actions", () => {
   it("should return then initial state", () => {
