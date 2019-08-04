@@ -54,8 +54,8 @@ describe("<TopStoriesPanel />", () => {
     const wrapper = shallow(<TopStoriesPanel {...props} />);
 
     const stories = wrapper.find("Story");
+
     expect(stories.length).toEqual(5);
-    console.log("stories.debug(): ", stories.debug());
     expect(stories.at(0).prop("story")).toEqual(props.stories[0]);
     expect(stories.at(1).prop("story")).toEqual(props.stories[1]);
     expect(stories.at(2).prop("story")).toEqual(props.stories[2]);
