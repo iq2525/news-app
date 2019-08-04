@@ -15,7 +15,9 @@ import { fetchStories } from "../actions/actions";
 import PropTypes from "prop-types";
 
 const Container = styled.section`
+  margin: auto;
   min-width: ${BREAKPOINTS.small}
+  max-width: ${BREAKPOINTS.large}
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
 `;
