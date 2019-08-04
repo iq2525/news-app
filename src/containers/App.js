@@ -41,6 +41,9 @@ export const App = ({ stories, isLoading, isError, fetchStories }) => {
         <h1>News App</h1>
       </header>
 
+      <h2>Instructions</h2>
+      <p>Click a button for a country to see the Top 5 stories. below.</p>
+
       <Content>
         <CountrySelectorPanel
           isLoading={isLoading}
