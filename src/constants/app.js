@@ -26,7 +26,7 @@ export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 
 export const NEWS_API_ENDPOINT = "https://newsapi.org/v2/top-headlines";
-export const NEWS_API_KEY = "apiKey=971ea0c019c44f2295c42cb972032a67";
+export const NEWS_API_KEY_PARAM = "apiKey=";
 export const NEWS_API_COUNTRY_PARAM = "country=";
 export const NEWS_API_PAGE_SIZE = "pageSize=5";
 

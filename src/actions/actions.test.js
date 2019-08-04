@@ -11,7 +11,7 @@ import {
   FETCH_SUCCESS,
   FETCH_FAILURE,
   NEWS_API_ENDPOINT,
-  NEWS_API_KEY,
+  NEWS_API_KEY_PARAM,
   NEWS_API_PAGE_SIZE,
   NEWS_API_COUNTRY_PARAM
 } from "../constants/app";
@@ -55,7 +55,9 @@ describe("actions", () => {
   it("should call REQUEST_STORIES & async FETCH_SUCCESS when fetchStories is done", () => {
     const fetchBody = { stories: ["story 1"] };
     const countryCode = "au";
-    const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY}&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${countryCode}`;
+    const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY_PARAM}${
+      process.env.REACT_APP_API_KEY
+    }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${countryCode}`;
 
     fetchMock.getOnce(endPoint, {
       body: fetchBody,
@@ -77,7 +79,9 @@ describe("actions", () => {
   it("should call REQUEST_STORIES & async FETCH_FAILURE when fetchStories fail", () => {
     const fetchFailure = "Fetch Error";
     const countryCode = "au";
-    const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY}&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${countryCode}`;
+    const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY_PARAM}${
+      process.env.REACT_APP_API_KEY
+    }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${countryCode}`;
 
     fetchMock.getOnce(endPoint, {
       throws: fetchFailure
