@@ -19,7 +19,7 @@ describe("<Story />", () => {
     expect(story.find("Link").prop("href")).toEqual(props.url);
     expect(story.find("Title").text()).toEqual(props.title);
     expect(story.find("Description").text()).toEqual(props.description);
-    expect(story.find("img").length).toEqual(1);
-    expect(story.find("img").prop("src")).toEqual(props.urlToImage);
+    expect(story.find("Image").length).toEqual(1);
+    expect(story.find("Image").prop("src")).toEqual(props.urlToImage);
   });
 });
