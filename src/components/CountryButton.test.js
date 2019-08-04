@@ -39,7 +39,7 @@ describe("<CountrySelectorPanel />", () => {
     button.simulate("click");
     expect(propsWithMockFunction.fetchStories.mock.calls.length).toEqual(1);
     expect(propsWithMockFunction.fetchStories.mock.calls[0][0]).toEqual(
-      props.country.code
+      props.country
     );
   });
 });
