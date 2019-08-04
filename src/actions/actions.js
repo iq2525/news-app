@@ -8,9 +8,9 @@ import {
   NEWS_API_KEY_PARAM
 } from "../constants/app";
 
-export const requestStories = countryCode => ({
+export const requestStories = country => ({
   type: REQUEST_STORIES,
-  countryCode
+  country
 });
 
 export const fetchSuccess = body => ({
@@ -23,12 +23,12 @@ export const fetchFailure = error => ({
   error
 });
 
-export const fetchStories = countryCode => dispatch => {
-  dispatch(requestStories(countryCode));
+export const fetchStories = country => dispatch => {
+  dispatch(requestStories(country));
 
   const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY_PARAM}${
     process.env.REACT_APP_API_KEY
-  }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${countryCode}`;
+  }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${country.countryCode}`;
   return fetch(endPoint)
     .then(res => res.json())
     .then(body => dispatch(fetchSuccess(body)))

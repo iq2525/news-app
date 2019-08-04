@@ -7,6 +7,7 @@ import {
 } from "./actions";
 import thunk from "redux-thunk";
 import {
+  COUNTRIES,
   REQUEST_STORIES,
   FETCH_SUCCESS,
   FETCH_FAILURE,
@@ -26,12 +27,12 @@ describe("actions", () => {
   });
 
   it("should create action to request Top Stories", () => {
-    const countryCode = "au";
+    const country = COUNTRIES[0];
     const expectedAction = {
       type: REQUEST_STORIES,
-      countryCode
+      country
     };
-    expect(requestStories(countryCode)).toEqual(expectedAction);
+    expect(requestStories(country)).toEqual(expectedAction);
   });
 
   it("should create FETCH_SUCCESS action", () => {
@@ -54,10 +55,10 @@ describe("actions", () => {
 
   it("should call REQUEST_STORIES & async FETCH_SUCCESS when fetchStories is done", () => {
     const fetchBody = { stories: ["story 1"] };
-    const countryCode = "au";
+    const country = COUNTRIES[0];
     const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY_PARAM}${
       process.env.REACT_APP_API_KEY
-    }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${countryCode}`;
+    }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${country.countryCode}`;
 
     fetchMock.getOnce(endPoint, {
       body: fetchBody,
@@ -65,36 +66,36 @@ describe("actions", () => {
     });
 
     const expectedActions = [
-      { type: REQUEST_STORIES, countryCode: countryCode },
+      { type: REQUEST_STORIES, country: country },
       { type: FETCH_SUCCESS, body: fetchBody }
     ];
 
     const store = mockStore({ countries: [], isLoading: true, isError: false });
 
-    return store.dispatch(fetchStories(countryCode)).then(() => {
+    return store.dispatch(fetchStories(country)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
   it("should call REQUEST_STORIES & async FETCH_FAILURE when fetchStories fail", () => {
     const fetchFailure = "Fetch Error";
-    const countryCode = "au";
+    const country = COUNTRIES[0];
     const endPoint = `${NEWS_API_ENDPOINT}?${NEWS_API_KEY_PARAM}${
       process.env.REACT_APP_API_KEY
-    }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${countryCode}`;
+    }&${NEWS_API_PAGE_SIZE}&${NEWS_API_COUNTRY_PARAM}${country.countryCode}`;
 
     fetchMock.getOnce(endPoint, {
       throws: fetchFailure
     });
 
     const expectedActions = [
-      { type: REQUEST_STORIES, countryCode: countryCode },
+      { type: REQUEST_STORIES, country: country },
       { type: FETCH_FAILURE, error: fetchFailure }
     ];
 
     const store = mockStore({ countries: [], isLoading: true, isError: false });
 
-    return store.dispatch(fetchStories(countryCode)).then(() => {
+    return store.dispatch(fetchStories(country)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
