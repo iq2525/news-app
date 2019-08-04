@@ -65,6 +65,7 @@ storiesOf("App", module)
       isError={false}
       stories={null}
       fetchStories={action("clicked")}
+      selectedCountry={null}
     />
   ))
   .add("loading state", () => (
@@ -73,6 +74,7 @@ storiesOf("App", module)
       isError={false}
       stories={null}
       fetchStories={action("clicked")}
+      selectedCountry={COUNTRIES[0].name}
     />
   ))
   .add("error state", () => (
@@ -81,6 +83,7 @@ storiesOf("App", module)
       isError={true}
       stories={null}
       fetchStories={action("clicked")}
+      selectedCountry={null}
     />
   ))
   .add("success state", () => (
@@ -89,6 +92,7 @@ storiesOf("App", module)
       isError={false}
       stories={stories}
       fetchStories={action("clicked")}
+      selectedCountry={COUNTRIES[0].name}
     />
   ));
 
