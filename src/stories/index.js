@@ -61,10 +61,44 @@ storiesOf("CountryButton", module)
     />
   ));
 
-storiesOf("TopStoriesPanel", module)
-  .add("empty state", () => <TopStoriesPanel isLoading={false} />)
-  .add("5 stories", () => <TopStoriesPanel {...propsTopStoriesPanel} />)
-  .add("loading state", () => (
-    <TopStoriesPanel {...propsTopStoriesPanelLoading} />
-  ))
-  .add("error state", () => <TopStoriesPanel {...propsTopStoriesPanelError} />);
+storiesOf("TopStoriesPanel", module).add("5 stories", () => (
+  <TopStoriesPanel
+    stories={[
+      {
+        title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        description:
+          "Morbi auctor nisi augue, in iaculis lectus ullamcorper ut. Aliquam in ultricies diam, eu mattis orci. Praesent eu ligula lectus. Quisque pretium quam in nulla porta, eget consequat erat bibendum. Ut a orci sapien. Integer cursus scelerisque quam ac tempor",
+        url: "http://test.com",
+        urlToImage: "http://via.placeholder.com/600x400"
+      },
+      {
+        title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        description:
+          "Morbi auctor nisi augue, in iaculis lectus ullamcorper ut. Aliquam in ultricies diam, eu mattis orci. Praesent eu ligula lectus. Quisque pretium quam in nulla porta, eget consequat erat bibendum. Ut a orci sapien. Integer cursus scelerisque quam ac tempor",
+        url: "http://test.com",
+        urlToImage: "http://via.placeholder.com/600x400"
+      },
+      {
+        title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        description:
+          "Morbi auctor nisi augue, in iaculis lectus ullamcorper ut. Aliquam in ultricies diam, eu mattis orci. Praesent eu ligula lectus. Quisque pretium quam in nulla porta, eget consequat erat bibendum. Ut a orci sapien. Integer cursus scelerisque quam ac tempor",
+        url: "http://test.com",
+        urlToImage: "http://via.placeholder.com/600x400"
+      },
+      {
+        title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        description:
+          "Morbi auctor nisi augue, in iaculis lectus ullamcorper ut. Aliquam in ultricies diam, eu mattis orci. Praesent eu ligula lectus. Quisque pretium quam in nulla porta, eget consequat erat bibendum. Ut a orci sapien. Integer cursus scelerisque quam ac tempor",
+        url: "http://test.com",
+        urlToImage: "http://via.placeholder.com/600x400"
+      },
+      {
+        title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        description:
+          "Morbi auctor nisi augue, in iaculis lectus ullamcorper ut. Aliquam in ultricies diam, eu mattis orci. Praesent eu ligula lectus. Quisque pretium quam in nulla porta, eget consequat erat bibendum. Ut a orci sapien. Integer cursus scelerisque quam ac tempor",
+        url: "http://test.com",
+        urlToImage: "http://via.placeholder.com/600x400"
+      }
+    ]}
+  />
+));
