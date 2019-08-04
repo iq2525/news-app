@@ -8,12 +8,14 @@ import {
   COLOUR_RED,
   COLOUR_WHITE,
   COLOUR_BLACK,
-  COLOUR_LIGHT_GREY
+  COLOUR_LIGHT_GREY,
+  BREAKPOINTS
 } from "../constants/styling";
 import { fetchStories } from "../actions/actions";
 import PropTypes from "prop-types";
 
 const Container = styled.section`
+  min-width: ${BREAKPOINTS.small}
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
 `;
