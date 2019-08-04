@@ -12,7 +12,7 @@ export const COUNTRIES = [
     code: "in"
   },
   {
-    name: "UK & Northern Ireland",
+    name: "Great Britain (UK & Northern Ireland)",
     code: "gb"
   },
   {
