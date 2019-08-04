@@ -13,13 +13,14 @@
 - [Create React App](#create-react-app)
 - [Task Assumptions](#task-assumptions)
 - [Fulfilling User Stories](#fulfilling-user-stories)
-  - [As a user](#as-a-user)
+  - [Story 1](#story-1)
+  - [Story 2](#story-2)
 - [News API Endpoint](#news-api-endpoint)
-- [No UK data](#no-uk-data)
-- [Changing the API key](#changing-the-api-key)
+- [Changing the News API key](#changing-the-news-api-key)
 - [Redux & Redux Thunk](#redux--redux-thunk)
   - [Redux Action Flow](#redux-action-flow)
 - [Redux Dev Tools](#redux-dev-tools)
+- [Styled Components](#styled-components)
 - [Responsive Design](#responsive-design)
 - [Error State](#error-state)
 - [PR](#pr)
@@ -82,34 +83,58 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Task Assumptions
 * The top 5 stories shown can be from any news source.
 * The entire app is only required in the English language.
-* The News API endpoint used only has data for GB(Great Britain) not specfically the UK. Therefore used GB instead.
+* The News API endpoint only has data for GB(Great Britain) not specfically the UK. Therefore used GB instead.
 
 ## Fulfilling User Stories
-### As a user
+### Story 1
+```
 When I visit the page
 I want to see a list of country
 So that I know which country are available
+```
+Shows all available countries as a list of Buttons. So a User can quickly and easily see all available Countries.
 
-* Shows all available countries as a list of Buttons. So a User can see all the Available countries
+### Story 2
+```
+As a user
+When I select a country
+I want to see the top 5 news headlines
+So that I know what the is happening in the country I selected
+```
+The app allows the user to click a Country button that will then load in Top 5 stories for that country.
 
 ## News API Endpoint
+This app uses the [News API](https://newsapi.org/) endpoint.
 
-## No UK data
-
-## Changing the API key
+## Changing the News API key
+Edit the following in the **.env** file:
+```
+REACT_APP_API_KEY
+```
 
 ## Redux & Redux Thunk
+[Redux](https://redux.js.org/) & [Redux Thunk](https://github.com/reduxjs/redux-thunk) to manage global state and async function calls
 
 ### Redux Action Flow
+1. User selects a country.
+2. This fires a REQUEST_STORIES action.  This sets 'isLoading=true' in Redux state.
+3. An 'fetch 'async call is made to News API to get the top 5 stories.
+4. If success, a FETCH_SUCCESS action is fired.
+5. If error, a FETCH_ERROR action is fired.
 
 ## Redux Dev Tools
+This app supports [Redux Dev Tools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) for Chrome.  I recommend installing this to see the Redux global state and data flow.
+
+## Styled Components
+React Components were styled with [Styled Components](https://www.styled-components.com/)
 
 ## Responsive Design
+The App is responsive so that it works on different screen sizes.
+
+Minimum screen width is: 320px,
 
 ## Error State
-
-
-
+The App displays an error if it cannot connect to the News API endpoint.
 
 ## PR 
 
