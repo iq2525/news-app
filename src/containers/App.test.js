@@ -2,7 +2,6 @@ import React from "react";
 import { App } from "./App";
 import { shallow } from "enzyme";
 import { COUNTRIES, LOADING_TEXT, ERROR_TEXT } from "../constants/app";
-import { jsxEmptyExpression } from "@babel/types";
 
 const props = {
   stories: [
