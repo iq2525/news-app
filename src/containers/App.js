@@ -9,14 +9,12 @@ import PropTypes from "prop-types";
 
 const Container = styled.section`
   width: 100%;
-  padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
 `;
 Container.displayName = "Container";
 
 const Content = styled.section`
   width: 100%;
-  padding: 10px;
 `;
 Content.displayName = "Content";
 
