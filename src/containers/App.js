@@ -4,6 +4,12 @@ import styled from "styled-components";
 import TopStoriesPanel from "../components/TopStoriesPanel";
 import CountrySelectorPanel from "../components/CountrySelectorPanel";
 import { COUNTRIES, LOADING_TEXT, ERROR_TEXT } from "../constants/app";
+import {
+  COLOUR_RED,
+  COLOUR_WHITE,
+  COLOUR_BLACK,
+  COLOUR_LIGHT_GREY
+} from "../constants/styling";
 import { fetchStories } from "../actions/actions";
 import PropTypes from "prop-types";
 
@@ -21,6 +27,19 @@ Content.displayName = "Content";
 const StatusBar = styled.section`
   width: 100%;
   padding: 10px;
+  color: ${props =>
+    props.isLoading
+      ? COLOUR_BLACK
+      : props.isError
+      ? COLOUR_WHITE
+      : COLOUR_BLACK};
+  background-color: ${props =>
+    props.isLoading
+      ? COLOUR_LIGHT_GREY
+      : props.isError
+      ? COLOUR_RED
+      : COLOUR_WHITE};
+  height: 20px;
 `;
 StatusBar.displayName = "StatusBar";
 
@@ -47,7 +66,9 @@ export const App = ({ stories, isLoading, isError, fetchStories }) => {
           fetchStories={fetchStories}
         />
 
-        <StatusBar>{statusText}</StatusBar>
+        <StatusBar isLoading={isLoading} isError={isError}>
+          {statusText}
+        </StatusBar>
 
         {stories && <TopStoriesPanel stories={stories} />}
       </Content>
