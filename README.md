@@ -20,6 +20,7 @@
   - [Changing the News API key](#changing-the-news-api-key)
   - [Redux & Redux Thunk](#redux--redux-thunk)
     - [Redux Action Flow](#redux-action-flow)
+    - [Redux Testing - redux-mock-store & fetch-mock](#redux-testing---redux-mock-store--fetch-mock)
   - [Redux Dev Tools](#redux-dev-tools)
   - [React Component Design](#react-component-design)
     - [Container Component connected to Redux - App.js](#container-component-connected-to-redux---appjs)
@@ -124,6 +125,11 @@ REACT_APP_API_KEY
 3. Then a 'fetch' async call is made to the News API endpoint to get the top 5 stories.
 4. If success, a FETCH_SUCCESS action is fired.
 5. If error, a FETCH_ERROR action is fired.
+
+### Redux Testing - redux-mock-store & fetch-mock
+Used **redux-mock-store** to test Redux actions.
+
+Used **fetch-mock** to mock async calls to News API.
 
 ## Redux Dev Tools
 This app supports [Redux Dev Tools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) for Chrome.  I recommend installing this to see the Redux global state and data flow.
