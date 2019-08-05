@@ -76,7 +76,7 @@ You can run React Storybook using:
 npm run storybook
 ```
 
-This will show you all the components used in the app and in their different states - e.g. Loading & Error states.
+This will show you all the components used in the app in their different states - e.g. Loading & Error states.
 
 ## Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -84,8 +84,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Task Assumptions
 * The top 5 stories shown can be from any news source.
 * The entire app is only required in the English language.
-* The News API endpoint only has data for GB(Great Britain) and not specfically for the UK. Therefore used GB instead.
-* Not sure how the Pull Request should be created.  So raised one from the 'master' to 'release' branch
+* The News API endpoint only has data for GB(Great Britain) and not specfically for the UK. Therefore used GB data instead.
+* Not sure how the requested Pull Request should be created.  So raised one from the 'master' to a 'release' branch
 ## Fulfilling User Stories
 ### Story 1
 ```
@@ -116,12 +116,12 @@ REACT_APP_API_KEY
 ```
 
 ## Redux & Redux Thunk
-[Redux](https://redux.js.org/) & [Redux Thunk](https://github.com/reduxjs/redux-thunk) to manage global state and async function calls
+[Redux](https://redux.js.org/) & [Redux Thunk](https://github.com/reduxjs/redux-thunk) is used to manage global state and async function calls.
 
 ### Redux Action Flow
 1. User selects a country.
 2. This fires a REQUEST_STORIES action.  This sets 'isLoading=true' in Redux state.
-3. A 'fetch 'async call is made to News API to get the top 5 stories.
+3. Then a 'fetch' async call is made to the News API endpoint to get the top 5 stories.
 4. If success, a FETCH_SUCCESS action is fired.
 5. If error, a FETCH_ERROR action is fired.
 
@@ -130,13 +130,13 @@ This app supports [Redux Dev Tools](https://chrome.google.com/webstore/detail/re
 
 ## React Component Design
 ### Container Component connected to Redux - App.js
-The App component is connected to Redux.  This passes data down to its child components.  This means we have to connect Redux only in one place.
+The App component is connected to Redux.  This passes data down to its child components.  This means we only have to connect Redux in one component.
 
-### Presentation Components 
-All other components are Presentation components.  Which only accept data passed down via props. - E.g. CountrySelectorPanel, CountryButton.
+### Presentation Components
+All other components are Presentation components.  Which use data passed down via props to generate the UI. - E.g. CountrySelectorPanel, CountryButton.
 
 ## Styled Components
-React Components were styled with [Styled Components](https://www.styled-components.com/)
+React Components are styled with [Styled Components](https://www.styled-components.com/)
 
 ## Responsive Design
 The App is responsive so that it works on different screen sizes.
@@ -144,7 +144,7 @@ The App is responsive so that it works on different screen sizes.
 Minimum screen width is: 320px,
 
 ## Enzyme for React Unit Testing
-This App used [Enzyme](https://airbnb.io/enzyme/) for testing the React components.
+This App uses [Enzyme](https://airbnb.io/enzyme/) for testing the React components.
 
 ## Error State
 The App displays an error if it cannot connect to the News API endpoint.
@@ -160,9 +160,9 @@ npm run eslint
 ```
 
 ## Pull Request
-Not sure how the Pull Request should be created.  So raised one from the 'master' to 'release' branch:
+I was not sure how to raise the requested Pull Request.  So I made an assumption and raised a PR from the 'master' branch to a 'release' branch:
 
-Link to PR here: [Github Pull Requests](https://github.com/iq2525/news-app/pulls)
+Link to PR here: [Github Pull Request](https://github.com/iq2525/news-app/pull/1)
 
 ## Future Enhancements
 * Support multiple languages
@@ -170,12 +170,12 @@ Link to PR here: [Github Pull Requests](https://github.com/iq2525/news-app/pulls
 * Add automated scripts using Cypress.
 
 ## Task Feedback
-I enjoyed working on this task as it allowed you to use a variety of skills such as making async calls and styling.  
+I enjoyed working on this task as it allowed you to use a variety of skills such as Responsive design and making async calls.
 
-Also, the fact that the task left the User Interface up to me, meant there is lots of different to do this task.  I enjoyed using React Storybook to try out various designs.
+Also, the fact that the task left the User Interface up to me, meant there is lots of different ways to complete this task.  I used  React Storybook to try out various design ideas.
 
-I used a TDD approach. The area that took the longest to write tests for was the Redux Thunk async calls.  
+I wrote code using a TDD approach. The area that took the longest to write tests for was the Redux Thunk async calls.
 
 I really like the idea of using Atomic commits. As it helped me break down my work into smaller increments.
 
-I was unsure how you wanted me to raise the PR. So I made an assumption and raised one from the 'master' to 'release' branch.
+I was unsure how you wanted me to raise the requested PR. So I made an assumption and raised one from the 'master' to 'release' branch.
