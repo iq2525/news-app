@@ -1,68 +1,187 @@
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false github} -->
+
+# News App
+
+<!-- code_chunk_output -->
+
+- [News App](#news-app)
+  - [Description](#description)
+  - [Software Requirements](#software-requirements)
+  - [Install App](#install-app)
+  - [Run App](#run-app)
+  - [Run tests](#run-tests)
+  - [React Storybook](#react-storybook)
+  - [Create React App](#create-react-app)
+  - [Task Assumptions](#task-assumptions)
+  - [Fulfilling User Stories](#fulfilling-user-stories)
+    - [Story 1](#story-1)
+    - [Story 2](#story-2)
+  - [News API Endpoint](#news-api-endpoint)
+  - [Changing the News API key](#changing-the-news-api-key)
+  - [Redux & Redux Thunk](#redux--redux-thunk)
+    - [Redux Action Flow](#redux-action-flow)
+    - [Redux Testing - redux-mock-store & fetch-mock](#redux-testing---redux-mock-store--fetch-mock)
+  - [Redux Dev Tools](#redux-dev-tools)
+  - [React Component Design](#react-component-design)
+    - [Container Component connected to Redux - App.js](#container-component-connected-to-redux---appjs)
+    - [Presentation Components](#presentation-components)
+  - [Styled Components](#styled-components)
+  - [Responsive Design](#responsive-design)
+  - [Enzyme for React Unit Testing](#enzyme-for-react-unit-testing)
+  - [Error State](#error-state)
+  - [Git hooks](#git-hooks)
+  - [Pull Request](#pull-request)
+  - [Future Enhancements](#future-enhancements)
+  - [Task Feedback](#task-feedback)
+
+<!-- /code_chunk_output -->
+
+## Description
+
+Created a News App that will allow you to see the Top 5 News stories from Australia, France, India, UK and USA.
+
+## Software Requirements
+This has been tested on:
+
+* Node v10.16.0
+* Chrome Browser v75
+
+Should work on any version of Node >= 10 and most modern Web browsers.
+
+## Install App
+Clone the repository, enter the directory and install dependencies:
+```
+git clone git@github.com:iq2525/news-app.git
+cd news-app
+npm install
+```
+## Run App
+```
+npm start
+```
+In your browser, go to: http://localhost:3000/
+
+## Run tests
+Unit tests are written to cover the entire app.
+
+You can run all the tests using:
+```
+npm test
+```
+
+## React Storybook
+The components were designed and developed using [React Storybook](https://storybook.js.org/).
+
+You can run React Storybook using:
+```
+npm run storybook
+```
+
+This will show you all the components used in the app in their different states - e.g. Loading & Error states.
+
+## Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Task Assumptions
+* The top 5 stories shown can be from any news source.
+* The entire app is only required in the English language.
+* The News API endpoint only has data for GB(Great Britain) and not specfically for the UK. Therefore used GB data instead.
+* Not sure how the requested Pull Request should be created.  So raised one from the 'master' to a 'release' branch
+## Fulfilling User Stories
+### Story 1
+```
+When I visit the page
+I want to see a list of country
+So that I know which country are available
+```
+The app shows all available countries as a list of Buttons. So a User can quickly and easily see all available Countries.
 
-In the project directory, you can run:
+### Story 2
+```
+As a user
+When I select a country
+I want to see the top 5 news headlines
+So that I know what the is happening in the country I selected
+```
+The app allows the user to click a Country button that will then load the Top 5 stories for that country.
 
-### `npm start`
+## News API Endpoint
+This app uses the [News API](https://newsapi.org/) endpoint.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Changing the News API key
+The App is configured to use my News API endpoint key.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+If you wish to change this, edit the following in the **'.env'** file:
+```
+REACT_APP_API_KEY
+```
 
-### `npm test`
+## Redux & Redux Thunk
+[Redux](https://redux.js.org/) & [Redux Thunk](https://github.com/reduxjs/redux-thunk) is used to manage global state and async function calls.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Redux Action Flow
+1. User selects a country.
+2. This fires a REQUEST_STORIES action.  This sets 'isLoading=true' in Redux state.
+3. Then a 'fetch' async call is made to the News API endpoint to get the top 5 stories.
+4. If success, a FETCH_SUCCESS action is fired.
+5. If error, a FETCH_ERROR action is fired.
 
-### `npm run build`
+### Redux Testing - redux-mock-store & fetch-mock
+Used **redux-mock-store** to test Redux actions.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Used **fetch-mock** to mock async calls to News API.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Redux Dev Tools
+This app supports [Redux Dev Tools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) for Chrome.  I recommend installing this to see the Redux global state and data flow.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## React Component Design
+### Container Component connected to Redux - App.js
+The App component is connected to Redux.  This passes data down to its child components.  This means we only have to connect Redux in one component.
 
-### `npm run eject`
+### Presentation Components
+All other components are Presentation components.  Which use data passed down via props to generate the UI. - E.g. CountrySelectorPanel, CountryButton.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Styled Components
+React Components are styled with [Styled Components](https://www.styled-components.com/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Responsive Design
+The App is responsive so that it works on different screen sizes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Minimum screen width is: 320px,
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Enzyme for React Unit Testing
+This App uses [Enzyme](https://airbnb.io/enzyme/) for testing the React components.
 
-## Learn More
+## Error State
+The App displays an error if it cannot connect to the News API endpoint.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Git hooks
+Using [Husky](https://github.com/typicode/husky) to set up Git hooks.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+When a commit is done, the following is always run:
+```
+npm test
+npm run eslint
 
-### Code Splitting
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Pull Request
+I was not sure how to raise the requested Pull Request.  So I made an assumption and raised a PR from the 'master' branch to a 'release' branch:
 
-### Analyzing the Bundle Size
+Link to PR here: [Github Pull Request](https://github.com/iq2525/news-app/pull/1)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Future Enhancements
+* Support multiple languages
+* Connect to the endpoint via a Proxy so that the API key is hidden.
+* Add automated scripts using Cypress.
 
-### Making a Progressive Web App
+## Task Feedback
+I enjoyed working on this task as it allowed you to use a variety of skills such as Responsive design and making async calls.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Also, the fact that the task left the User Interface up to me, meant there is lots of different ways to complete this task.  I used  React Storybook to try out various design ideas.
 
-### Advanced Configuration
+I wrote code using a TDD approach. The area that took the longest to write tests for was the Redux Thunk async calls.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+I really like the idea of using Atomic commits. As it helped me break down my work into smaller increments.
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+I was unsure how you wanted me to raise the requested PR. So I made an assumption and raised one from the 'master' to 'release' branch.
